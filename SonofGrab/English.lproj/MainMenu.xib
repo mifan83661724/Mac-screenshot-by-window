@@ -515,22 +515,22 @@
         <window title="Composited Image" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="419">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
-            <rect key="contentRect" x="853" y="625" width="542" height="460"/>
+            <rect key="contentRect" x="853" y="625" width="560" height="559"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="360" height="240"/>
             <view key="contentView" misplaced="YES" id="420">
-                <rect key="frame" x="0.0" y="0.0" width="542" height="460"/>
+                <rect key="frame" x="0.0" y="0.0" width="560" height="559"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView misplaced="YES" id="421">
-                        <rect key="frame" x="17" y="5" width="508" height="380"/>
+                        <rect key="frame" x="17" y="5" width="526" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="422"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="Zox-lj-08O">
-                        <rect key="frame" x="256" y="436" width="60" height="22"/>
+                        <rect key="frame" x="256" y="535" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Height" drawsBackground="YES" id="sev-N2-fcL">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Height" drawsBackground="YES" id="sev-N2-fcL">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="N12-Sf-8lW"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -538,9 +538,9 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="wU9-sD-wWJ">
-                        <rect key="frame" x="20" y="436" width="60" height="22"/>
+                        <rect key="frame" x="20" y="535" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="X" drawsBackground="YES" id="LL7-yk-h1x">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="X" drawsBackground="YES" id="LL7-yk-h1x">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Sfo-C6-I5d"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -548,9 +548,9 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="O15-Y9-LAR">
-                        <rect key="frame" x="179" y="436" width="60" height="22"/>
+                        <rect key="frame" x="179" y="535" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Width" drawsBackground="YES" id="mrB-CX-iQ7">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Width" drawsBackground="YES" id="mrB-CX-iQ7">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Tbz-sx-vCN"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -558,7 +558,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" misplaced="YES" id="6Ex-UI-gpg">
-                        <rect key="frame" x="344" y="437" width="107" height="19"/>
+                        <rect key="frame" x="344" y="536" width="107" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="机器学习识别" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UPd-TG-cZy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -569,9 +569,9 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="CSh-hX-3rE">
-                        <rect key="frame" x="96" y="436" width="60" height="22"/>
+                        <rect key="frame" x="96" y="535" width="60" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Y" drawsBackground="YES" id="KAl-Mj-mPG">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Y" drawsBackground="YES" id="KAl-Mj-mPG">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="F4R-w7-5ks"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -579,7 +579,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="HXc-5Z-GL4">
-                        <rect key="frame" x="18" y="384" width="300" height="50"/>
+                        <rect key="frame" x="18" y="447" width="300" height="86"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" placeholderString="识别结果:" id="6Yx-FI-JWD">
                             <font key="font" metaFont="system"/>
@@ -589,7 +589,7 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="77" y="82"/>
+            <point key="canvasLocation" x="86" y="131.5"/>
         </window>
         <customObject id="429" customClass="Controller">
             <connections>

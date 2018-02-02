@@ -10,3 +10,8 @@
 #include <opencv2/opencv.hpp>
 #import <Cocoa/Cocoa.h>
 
+#if 0
+    #define D_LOG(str, ...) printf(str, ##__VA_ARGS__);
+#else
+    #define D_LOG(str, ...)
+#endif

@@ -7,9 +7,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class RecognizedResult;
 @interface NSImage (Converter)
 
-- (IplImage *)opencvImage;
 
-- (NSImage *)showAreaAndClipWithRect:(NSRect)rect;
++ (NSImage *)showAreaAndClipWithCGImage:(CGImageRef)ref rect:(NSRect)rect;
+- (RecognizedResult *)clipWithRect:(NSRect)rect totalHeight:(float)height;
+
 @end

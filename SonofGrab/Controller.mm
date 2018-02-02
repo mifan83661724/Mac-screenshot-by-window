@@ -8,6 +8,7 @@
 
 #import "Controller.h"
 #import "NSImage+Converter.h"
+#import "MainTrainning.h"
 
 
 @interface WindowListApplierData : NSObject
@@ -62,11 +63,18 @@
 @property (weak) IBOutlet NSTextField *rstField;
 
 
-- (IBAction)handleRecognizedBtn:(id)sender;
+@property (nonatomic, strong) dispatch_source_t timer;
+@property (nonatomic, strong) RecognizedResult* result;
+
 - (IBAction)handleCopy:(id)sender;
+
 
 @end
 
+
+static NSString*  s_wxWindowName;
+static CGSize     s_wxWindowSize;
+static CGWindowID s_wxWindowId;
 
 @implementation Controller
 
@@ -102,19 +110,53 @@ inline uint32_t ChangeBits(uint32_t currentBits, uint32_t flagsToChange, BOOL se
 	}
 }
 
+#pragma mark - GETTER / SETTER
+- (dispatch_source_t)timer
+{
+    if (_timer == nil)
+    {
+        __weak typeof(self) _weakSelf = self;
+        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+        dispatch_source_set_timer(_timer, DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC, 0.05 * NSEC_PER_SEC);
+        dispatch_source_set_event_handler(_timer, ^{
+            if (s_wxWindowId)
+            {
+                [_weakSelf createSingleWindowShot: s_wxWindowId];
+            }
+        });
+        dispatch_resume(_timer);
+    }
+    return _timer;
+}
+
+- (float)valueWithTF:(NSTextField *)textfield
+{
+    NSString *string = [textfield.stringValue stringByReplacingOccurrencesOfString: @"," withString: @""];
+    return (float)[string doubleValue];
+}
 -(void)setOutputImage:(CGImageRef)cgImage
 {
 	if(cgImage != NULL)
 	{
 		// Create a bitmap rep from the image...
-		NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:cgImage];
-		// Create an NSImage and add the bitmap rep to it...
-		NSImage *image = [[NSImage alloc] init];
-		[image addRepresentation: bitmapRep];
-		// Set the output view to the new NSImage.
-		[outputView setImage: [image showAreaAndClipWithRect: CGRectMake(0, 0, 0, 0)]];
-        
-//        [image opencvImage];
+//        NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:cgImage];
+//        // Create an NSImage and add the bitmap rep to it...
+//        NSImage *image = [[NSImage alloc] init];
+//        [image addRepresentation: bitmapRep];
+//        // Set the output view to the new NSImage.
+        NSRect area = NSMakeRect([self valueWithTF: self.xField],
+                                 [self valueWithTF: self.yField],
+                                 [self valueWithTF: self.wField],
+                                 [self valueWithTF: self.hField]);
+        NSImage *outputImage = [NSImage showAreaAndClipWithCGImage: cgImage rect: area];
+        [outputView setImage: outputImage];
+        RecognizedResult *rst = [outputImage clipWithRect: area totalHeight: CGImageGetHeight(cgImage)];
+        if (rst.count && rst.count != _result.count)
+        {
+            _result = rst;
+            
+            [self.rstField setStringValue: _result.description];
+        }
 	}
 	else
 	{
@@ -180,9 +222,15 @@ void WindowListApplierFunction(const void *inputDictionary, void *context)
 		data.order++;
 		
         // 过滤只包含微信的
-        if ([outputEntry[kAppNameKey] rangeOfString: @"微信"].location != NSNotFound)
+        if ([outputEntry[kAppNameKey] rangeOfString: @"微信"].location != NSNotFound &&
+            bounds.size.width > 200 && bounds.size.height > 200)
         {
             [data.outputArray addObject:outputEntry];
+            
+            // record the message about weixin window
+            s_wxWindowName = outputEntry[kAppNameKey];
+            s_wxWindowSize = bounds.size;
+            s_wxWindowId = [outputEntry[kWindowIDKey] intValue];
         }
 	}
 }
@@ -271,6 +319,7 @@ void WindowListApplierFunction(const void *inputDictionary, void *context)
 
 -(void)updateImageWithSelection
 {
+#if 0
 	// Depending on how much is selected either clear the output image
 	// set the image based on a single selected window or
 	// set the image based on multiple selected windows.
@@ -281,6 +330,7 @@ void WindowListApplierFunction(const void *inputDictionary, void *context)
 	}
 	else if([selection count] == 1)
 	{
+#warning 入口1
 		// Single window selected, so use the single window options.
 		// Need to grab the CGWindowID to pass to the method.
 		CGWindowID windowID = [selection[0][kWindowIDKey] unsignedIntValue];
@@ -291,6 +341,12 @@ void WindowListApplierFunction(const void *inputDictionary, void *context)
 		// Multiple windows selected, so composite just those windows
 		[self createMultiWindowShot:selection];
 	}
+#else
+    if (s_wxWindowId)
+    {
+        [self createSingleWindowShot: s_wxWindowId];
+    }
+#endif
 }
 
 enum
@@ -372,7 +428,14 @@ NSString *kvoContext = @"SonOfGrabContext";
 	
 	// Default to creating a screen shot. Do this after our return since the previous request
 	// to refresh the window list will set it to nothing due to the interactions with KVO.
-	[self performSelectorOnMainThread:@selector(createScreenShot) withObject:self waitUntilDone:NO];
+//    [self performSelectorOnMainThread:@selector(createScreenShot) withObject:self waitUntilDone:NO];
+    
+    [self.xField setStringValue: @"950"];
+    [self.yField setStringValue: @"450"];
+    [self.wField setStringValue: @"550"];
+    [self.hField setStringValue: @"300"];
+    
+    [self timer];
 }
 
 -(void)dealloc
@@ -459,5 +522,18 @@ NSString *kvoContext = @"SonOfGrabContext";
 	[self updateWindowList];
 	[self updateImageWithSelection];
 }
+- (IBAction)handleRecognizedBtn:(id)sender
+{
+    [self createSingleWindowShot: s_wxWindowId];
+}
+
+
+
 
 @end
+
+
+
+
+
+

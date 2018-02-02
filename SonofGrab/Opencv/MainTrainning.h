@@ -10,12 +10,15 @@
 
 @interface RecognizedResult : NSObject
 
-@property (nonatomic, assign) double money;
-@property (nonatomic, assign) NSString* remark;
-@property (nonatomic, assign) int count;
+@property (assign) double money;
+@property (copy  ) NSString* remark;
+@property (assign) int count;
 
 @end
 
 @interface MainTrainning : NSObject
+
+- (int)recognize:(char *)path money:(double *)money remaork:(char **)remark index:(int *)index;
+- (RecognizedResult *)recognize:(char *)path;
 
 @end

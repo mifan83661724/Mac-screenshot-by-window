@@ -136,7 +136,6 @@
 		2285236420234710000777B8 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 2285236320234710000777B8 /* include */; };
 		228523692023FB01000777B8 /* NSImage+Converter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 228523682023FB01000777B8 /* NSImage+Converter.mm */; };
 		2285236B20242D04000777B8 /* opencvReadNu in Resources */ = {isa = PBXBuildFile; fileRef = 2285236A20242D04000777B8 /* opencvReadNu */; };
-		2285236F202435E9000777B8 /* screenshot in Resources */ = {isa = PBXBuildFile; fileRef = 2285236E202435E9000777B8 /* screenshot */; };
 		22852372202436F2000777B8 /* MainTrainning.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22852371202436F2000777B8 /* MainTrainning.mm */; };
 		6392A2DB0CA85F9100CF4CC0 /* Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6392A2DA0CA85F9100CF4CC0 /* Controller.mm */; };
 		63FCF3B410FE5A3700B5EE20 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FCF3B210FE5A3700B5EE20 /* MainMenu.xib */; };
@@ -280,7 +279,6 @@
 		228523672023FB01000777B8 /* NSImage+Converter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Converter.h"; sourceTree = "<group>"; };
 		228523682023FB01000777B8 /* NSImage+Converter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NSImage+Converter.mm"; sourceTree = "<group>"; };
 		2285236A20242D04000777B8 /* opencvReadNu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = opencvReadNu; sourceTree = "<group>"; };
-		2285236E202435E9000777B8 /* screenshot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = screenshot; path = ../../../screenshot; sourceTree = "<group>"; };
 		22852370202436F2000777B8 /* MainTrainning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTrainning.h; sourceTree = "<group>"; };
 		22852371202436F2000777B8 /* MainTrainning.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MainTrainning.mm; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
@@ -455,7 +453,6 @@
 				228523682023FB01000777B8 /* NSImage+Converter.mm */,
 				22852370202436F2000777B8 /* MainTrainning.h */,
 				22852371202436F2000777B8 /* MainTrainning.mm */,
-				2285236E202435E9000777B8 /* screenshot */,
 				2285236A20242D04000777B8 /* opencvReadNu */,
 				2285236320234710000777B8 /* include */,
 				2285225F202346E8000777B8 /* lib */,
@@ -723,7 +720,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				2285236F202435E9000777B8 /* screenshot in Resources */,
 				2285236420234710000777B8 /* include in Resources */,
 				2285236B20242D04000777B8 /* opencvReadNu in Resources */,
 				63FCF3B410FE5A3700B5EE20 /* MainMenu.xib in Resources */,
