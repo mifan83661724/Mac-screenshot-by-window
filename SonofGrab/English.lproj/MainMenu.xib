@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="SonOfGrab" id="56">
@@ -230,6 +230,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="123" y="-256"/>
         </menu>
         <window title="Window List" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
@@ -245,8 +246,8 @@
                         <rect key="frame" x="214" y="0.0" width="587" height="378"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="EDX-W4-Kpb">
-                            <rect key="frame" x="1" y="23" width="585" height="354"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <rect key="frame" x="1" y="0.0" width="585" height="377"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" autosaveColumns="NO" headerView="379" id="378">
                                     <rect key="frame" x="0.0" y="0.0" width="585" height="354"/>
@@ -343,7 +344,7 @@
                             <rect key="frame" x="1" y="361" width="585" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="376">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="376">
                             <rect key="frame" x="570" y="23" width="16" height="354"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -488,7 +489,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Grab Screenshot" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="437">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="titleBar" size="12"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
                             <action selector="grabScreenShot:" target="429" id="451"/>
@@ -514,24 +515,86 @@
         <window title="Composited Image" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="419">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
-            <rect key="contentRect" x="853" y="625" width="360" height="240"/>
+            <rect key="contentRect" x="853" y="625" width="542" height="460"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="360" height="240"/>
-            <view key="contentView" id="420">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="240"/>
+            <view key="contentView" misplaced="YES" id="420">
+                <rect key="frame" x="0.0" y="0.0" width="542" height="460"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="421">
-                        <rect key="frame" x="17" y="17" width="326" height="206"/>
+                    <imageView misplaced="YES" id="421">
+                        <rect key="frame" x="17" y="5" width="508" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="422"/>
                     </imageView>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="Zox-lj-08O">
+                        <rect key="frame" x="256" y="436" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Height" drawsBackground="YES" id="sev-N2-fcL">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="N12-Sf-8lW"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="wU9-sD-wWJ">
+                        <rect key="frame" x="20" y="436" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="X" drawsBackground="YES" id="LL7-yk-h1x">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Sfo-C6-I5d"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="O15-Y9-LAR">
+                        <rect key="frame" x="179" y="436" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Width" drawsBackground="YES" id="mrB-CX-iQ7">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Tbz-sx-vCN"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="6Ex-UI-gpg">
+                        <rect key="frame" x="344" y="437" width="107" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="机器学习识别" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UPd-TG-cZy">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="handleRecognizedBtn:" target="429" id="lE6-wK-gPW"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="CSh-hX-3rE">
+                        <rect key="frame" x="96" y="436" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Y" drawsBackground="YES" id="KAl-Mj-mPG">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="F4R-w7-5ks"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="HXc-5Z-GL4">
+                        <rect key="frame" x="18" y="384" width="300" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" placeholderString="识别结果:" id="6Yx-FI-JWD">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="77" y="82"/>
         </window>
         <customObject id="429" customClass="Controller">
             <connections>
                 <outlet property="arrayController" destination="438" id="442"/>
+                <outlet property="hField" destination="Zox-lj-08O" id="qb4-z1-b6a"/>
                 <outlet property="imageFramingEffects" destination="409" id="478"/>
                 <outlet property="imageOpaqueImage" destination="411" id="479"/>
                 <outlet property="imageShadowsOnly" destination="413" id="480"/>
@@ -539,8 +602,12 @@
                 <outlet property="listDesktopWindows" destination="403" id="477"/>
                 <outlet property="listOffscreenWindows" destination="401" id="476"/>
                 <outlet property="outputView" destination="421" id="443"/>
+                <outlet property="rstField" destination="HXc-5Z-GL4" id="NhC-49-Ufc"/>
                 <outlet property="singleWindow" destination="425" id="483"/>
+                <outlet property="wField" destination="O15-Y9-LAR" id="XfG-Tm-iY9"/>
                 <outlet property="window" destination="371" id="459"/>
+                <outlet property="xField" destination="wU9-sD-wWJ" id="pkL-Mr-U4f"/>
+                <outlet property="yField" destination="CSh-hX-3rE" id="fxL-kO-nPh"/>
             </connections>
         </customObject>
         <arrayController objectClassName="NSDictionary" editable="NO" avoidsEmptySelection="NO" id="438">
