@@ -268,7 +268,8 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
             break;
         }
         else if (i == 6 && (fabs(tmp - 0.1142) <= 0.003 ||
-                            fabs(tmp - 0.1099) <= 0.0001))
+                            fabs(tmp - 0.1099) <= 0.0001 ||
+                            fabs(tmp - 0.1054) <= 0.0005))
         {
             matchestIndex = 6;
             break;
@@ -288,13 +289,14 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
         }
         else if (i == SupportCharacter_Line && (fabs(tmp - 2.9937) <= 0.01 ||
                                                 fabs(tmp - 2.7538) <= 0.01 ||
-                                                fabs(tmp - 2.4364) <= 0.01))
+                                                fabs(tmp - 2.4364) <= 0.01 ||
+                                                fabs(tmp - 2.5584) <= 0.2))
         {
             matchestIndex = SupportCharacter_Line;
             break;
         }
 #endif
-#if 0
+#if 1
         if (i == 1 && rect.x == 556 && rect.y == 270)
         {
             printf("\n'1' --  %i:%.4f\n", i, tmp);
@@ -307,7 +309,7 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
         {
             printf("\n'5' --  %i:%.4f\n", i, tmp);
         }
-        if (i == 6 && rect.x == 622 && rect.y == 269)
+        if (i == 6 && rect.x == 1138 && rect.y == 269)
         {
             printf("\n'6' --  %i:%.4f\n", i, tmp);
         }
@@ -323,7 +325,7 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
         {
             printf("\n'9' --  %i:%.4f\n", i, tmp);
         }
-        if (i == SupportCharacter_Line && (rect.x == 1184 ||
+        if (i == SupportCharacter_Line && (rect.x == 724 ||
                                            rect.x == 1285))
         {
             printf("\n'-' --  %i:%.4f\n", i, tmp);
