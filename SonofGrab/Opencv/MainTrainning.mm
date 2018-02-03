@@ -58,14 +58,6 @@ void Init(void);
 using namespace cv;
 using namespace std;
 
-
-string testPic[] =
-{
-    "test1.jpg", "test2.jpg",  "test3.jpg",  "test4.jpg",
-    "test5.jpg", "test6.jpg",  "test7.jpg",  "test8.jpg",
-    "test9.jpg", "test10.jpg", "test11.png", "test12.png"
-};
-
 typedef enum
 {
     SupportCharacter_0 = 0,
@@ -80,6 +72,7 @@ typedef enum
     SupportCharacter_9,
     SupportCharacter_Point,
     SupportCharacter_RMB,
+    SupportCharacter_Line,
     
     SupportCharacter_Count
 }SupportCharacter;
@@ -123,12 +116,12 @@ void BeEqual(int *list1, int* list2)
 }
 
 // 对比学习集合-储存白底黑子的数字图片
-string base_path = "/Users/liuxiang/Documents/opencv-workspace/opencvReadNu/";
+string base_path = "/Users/liuxiang/Documents/mac-sceen-shot/SonofGrab/Opencv/opencvReadNu/";
 string picture[SupportCharacter_Count] =
 {
     "0.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg",
     "5.png", "6.png", "7.png", "8.png", "9.png",
-    "point.png", "rmb.png"
+    "point.png", "rmb.png", "_.png"
 };
 CvSeq *pic[SupportCharacter_Count];  //储存数字图片轮廓
 CvSeq* GetImageContour(IplImage* srcIn, int flag = 0, string* imgName = NULL)
@@ -193,7 +186,7 @@ void Init(void)
     moneyRect.width = 710;
     moneyRect.height = 130;
     
-    remarkRect.x = 530;
+    remarkRect.x = 525;
     remarkRect.y = 260;
     remarkRect.width = 1450;
     remarkRect.height = 130;
@@ -255,7 +248,12 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
             break;
         }
 #else
-        if (i == 3 && (fabs(tmp - 0.9084) <= 0.02 ||
+        if (i == 1 && fabs(tmp - 8.2096) <= 0.01)
+        {
+            matchestIndex = 1;
+            break;
+        }
+        else if (i == 3 && (fabs(tmp - 0.9084) <= 0.02 ||
                        fabs(tmp - 0.7414) <= 0.02 ||
                        fabs(tmp - 0.8106) <= 0.01))
         {
@@ -288,8 +286,19 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
             matchestIndex = 8;
             break;
         }
+        else if (i == SupportCharacter_Line && (fabs(tmp - 2.9937) <= 0.01 ||
+                                                fabs(tmp - 2.7538) <= 0.01 ||
+                                                fabs(tmp - 2.4364) <= 0.01))
+        {
+            matchestIndex = SupportCharacter_Line;
+            break;
+        }
 #endif
-#if 1
+#if 0
+        if (i == 1 && rect.x == 556 && rect.y == 270)
+        {
+            printf("\n'1' --  %i:%.4f\n", i, tmp);
+        }
         if (i == 3 && rect.x == 1241 && rect.y == 269)
         {
             printf("\n'3' --  %i:%.4f\n", i, tmp);
@@ -314,6 +323,11 @@ int ReadNumber(CvSeq* contoursTemp, double& matchedRate)
         {
             printf("\n'9' --  %i:%.4f\n", i, tmp);
         }
+        if (i == SupportCharacter_Line && (rect.x == 1184 ||
+                                           rect.x == 1285))
+        {
+            printf("\n'-' --  %i:%.4f\n", i, tmp);
+        }
 #endif
     }
     matchedRate = matchedValue;
@@ -331,10 +345,10 @@ void GetResult(int numList[100][5], int count, double &money, char** remark, int
     
     
 #if !IS_WIN
-//    for (int i = 0; i < count; i++)
-//    {
-//        printf("%i, {%03i, %03i} {%02i, %02i} --111 - %i\n", numList[i][0], numList[i][1], numList[i][2], numList[i][3], numList[i][4], i);
-//    }
+    for (int i = 0; i < count; i++)
+    {
+        D_LOG("%i, {%03i, %03i} {%02i, %02i} --111 - %i\n", numList[i][0], numList[i][1], numList[i][2], numList[i][3], numList[i][4], i);
+    }
     
     // Sort
     int tmp[5];
@@ -350,18 +364,18 @@ void GetResult(int numList[100][5], int count, double &money, char** remark, int
             }
         }
     }
-//    for (int i = 0; i < count; i++)
-//    {
-//        printf("%i, {%03i, %03i} {%02i, %02i} --222 - %i \n", numList[i][0], numList[i][1], numList[i][2], numList[i][3], numList[i][4], i);
-//    }
+    for (int i = 0; i < count; i++)
+    {
+        D_LOG("%i, {%03i, %03i} {%02i, %02i} --222 - %i \n", numList[i][0], numList[i][1], numList[i][2], numList[i][3], numList[i][4], i);
+    }
     
 #endif
     
     for (int i = count - 1; i >= 0; i--)
     {
-        if (numList[i][0] > 9 || numList[i][0] < 0)
+        if (numList[i][0] > SupportCharacter_Count || numList[i][0] < 0)
         {
-            printf("ERROR number:%i, index:%i\n", numList[i][0], i);
+            D_LOG("ERROR number:%i, index:%i\n", numList[i][0], i);
         }
         
         int lastX = 0;
@@ -418,7 +432,14 @@ void GetResult(int numList[100][5], int count, double &money, char** remark, int
     // 组合备注
     for (int i = 0; i < remarkNumCount; i++)
     {
-        remarkValue[i] = diff + remarkList[i];
+        if (remarkList[i] <= SupportCharacter_9)
+        {
+            remarkValue[i] = diff + remarkList[i];
+        }
+        else if (remarkList[i] == SupportCharacter_Line)
+        {
+            remarkValue[i] = '_';
+        }
     }
     
     // 3. 组合金额
@@ -483,7 +504,7 @@ void GetResult(int numList[100][5], int count, double &money, char** remark, int
     {
         shouldDraw = false; num = -1;
         CvRect rect = cvBoundingRect(contoursTemp, 1);  //根据序列，返回轮廓外围矩形
-        //        printf("Matched: {%03i, %03i} {%02i, %02i} --\n", rect.x, rect.y, rect.width, rect.height);
+        //printf("Matched: {%03i, %03i} {%02i, %02i} --\n", rect.x, rect.y, rect.width, rect.height);
         // 只处理金额/备注/笔数区域
         if ((IsContourValid(rect, moneyRect) ||
              IsContourValid(rect, remarkRect)||
@@ -548,7 +569,25 @@ void GetResult(int numList[100][5], int count, double &money, char** remark, int
                     numList[count][4] = rect.height;
                     
                     count++;
-                    printf(" mr:%2.2lf, '.'", matchedRate);
+                    D_LOG(" mr:%2.2lf, '.'", matchedRate);
+                }
+                shouldDraw = true;
+            }
+#else
+            // 下划线 '_'
+            else if (rect.width / rect.height >= 5)
+            {
+                num = ReadNumber(contoursTemp, matchedRate);
+                if (num == SupportCharacter_Line)
+                {
+                    numList[count][0] = num;
+                    numList[count][1] = rect.x;
+                    numList[count][2] = rect.y;
+                    numList[count][3] = rect.width;
+                    numList[count][4] = rect.height;
+                    
+                    count++;
+                    D_LOG(" mr:%2.2lf, '_'", matchedRate);
                 }
                 shouldDraw = true;
             }

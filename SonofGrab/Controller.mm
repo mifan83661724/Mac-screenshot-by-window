@@ -156,6 +156,7 @@ inline uint32_t ChangeBits(uint32_t currentBits, uint32_t flagsToChange, BOOL se
             _result = rst;
             
             [self.rstField setStringValue: _result.description];
+            NSLog(@"%@", _result.description);
         }
 	}
 	else
