@@ -9,6 +9,7 @@
 #import "Controller.h"
 #import "NSImage+Converter.h"
 #import "MainTrainning.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 
 @interface WindowListApplierData : NSObject
@@ -66,7 +67,7 @@
 @property (nonatomic, strong) dispatch_source_t timer;
 @property (nonatomic, strong) RecognizedResult* result;
 
-- (IBAction)handleCopy:(id)sender;
+
 
 
 @end
@@ -108,6 +109,23 @@ inline uint32_t ChangeBits(uint32_t currentBits, uint32_t flagsToChange, BOOL se
 	{	// Clear Bits
 		return currentBits & ~flagsToChange;
 	}
+}
+void PlayOrderSound()
+{
+    static SystemSoundID s_soundID = 0;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *path = [[NSBundle mainBundle] pathForResource: @"dilingdi" ofType: @"wav"];
+        if (path)
+        {
+            OSStatus st = AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL URLWithString: path], &s_soundID);
+            if (st != kAudioServicesNoError)
+            {
+                NSLog(@"Create sound fail!");
+            }
+        }
+    });
+    AudioServicesPlaySystemSound(s_soundID);
 }
 
 #pragma mark - GETTER / SETTER
@@ -157,6 +175,8 @@ inline uint32_t ChangeBits(uint32_t currentBits, uint32_t flagsToChange, BOOL se
             
             [self.rstField setStringValue: _result.description];
             NSLog(@"%@", _result.description);
+            
+            PlayOrderSound();
         }
 	}
 	else
@@ -527,7 +547,19 @@ NSString *kvoContext = @"SonOfGrabContext";
 {
     [self createSingleWindowShot: s_wxWindowId];
 }
-
+- (IBAction)handleCopyBtn:(id)sender
+{
+    if (self.result.remark)
+    {
+        NSRange range = [self.result.remark rangeOfString: @"_"];
+        if (range.location != NSNotFound)
+        {
+            NSString *orderID = [self.result.remark substringFromIndex: range.location + 1];
+            [[NSPasteboard generalPasteboard] clearContents];
+            [[NSPasteboard generalPasteboard] setString: orderID forType: NSPasteboardTypeString];
+        }
+    }
+}
 
 
 

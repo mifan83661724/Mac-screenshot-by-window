@@ -137,6 +137,8 @@
 		228523692023FB01000777B8 /* NSImage+Converter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 228523682023FB01000777B8 /* NSImage+Converter.mm */; };
 		2285236B20242D04000777B8 /* opencvReadNu in Resources */ = {isa = PBXBuildFile; fileRef = 2285236A20242D04000777B8 /* opencvReadNu */; };
 		22852372202436F2000777B8 /* MainTrainning.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22852371202436F2000777B8 /* MainTrainning.mm */; };
+		2285237420258CC6000777B8 /* dilingdi.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2285237320258CC5000777B8 /* dilingdi.wav */; };
+		2285237620258E3E000777B8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2285237520258E3E000777B8 /* AudioToolbox.framework */; };
 		6392A2DB0CA85F9100CF4CC0 /* Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6392A2DA0CA85F9100CF4CC0 /* Controller.mm */; };
 		63FCF3B410FE5A3700B5EE20 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FCF3B210FE5A3700B5EE20 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -281,6 +283,8 @@
 		2285236A20242D04000777B8 /* opencvReadNu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = opencvReadNu; sourceTree = "<group>"; };
 		22852370202436F2000777B8 /* MainTrainning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTrainning.h; sourceTree = "<group>"; };
 		22852371202436F2000777B8 /* MainTrainning.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MainTrainning.mm; sourceTree = "<group>"; };
+		2285237320258CC5000777B8 /* dilingdi.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dilingdi.wav; sourceTree = "<group>"; };
+		2285237520258E3E000777B8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SonOfGrab_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonOfGrab_Prefix.pch; sourceTree = "<group>"; };
 		6392A2D90CA85F9100CF4CC0 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2285237620258E3E000777B8 /* AudioToolbox.framework in Frameworks */,
 				22852300202346E8000777B8 /* libopencv_img_hash.3.4.0.dylib in Frameworks */,
 				228522F0202346E8000777B8 /* libopencv_aruco.3.4.dylib in Frameworks */,
 				228522E7202346E8000777B8 /* libopencv_optflow.3.4.0.dylib in Frameworks */,
@@ -453,6 +458,7 @@
 				228523682023FB01000777B8 /* NSImage+Converter.mm */,
 				22852370202436F2000777B8 /* MainTrainning.h */,
 				22852371202436F2000777B8 /* MainTrainning.mm */,
+				2285237320258CC5000777B8 /* dilingdi.wav */,
 				2285236A20242D04000777B8 /* opencvReadNu */,
 				2285236320234710000777B8 /* include */,
 				2285225F202346E8000777B8 /* lib */,
@@ -655,6 +661,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2285237520258E3E000777B8 /* AudioToolbox.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -719,6 +726,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2285237420258CC6000777B8 /* dilingdi.wav in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2285236420234710000777B8 /* include in Resources */,
 				2285236B20242D04000777B8 /* opencvReadNu in Resources */,

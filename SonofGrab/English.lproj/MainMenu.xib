@@ -557,15 +557,15 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" misplaced="YES" id="6Ex-UI-gpg">
-                        <rect key="frame" x="344" y="536" width="107" height="19"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="Y3j-Rp-Uub">
+                        <rect key="frame" x="354" y="534" width="107" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="机器学习识别" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UPd-TG-cZy">
+                        <buttonCell key="cell" type="roundRect" title="机器学习识别" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nNe-yn-U4q">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
-                            <action selector="handleRecognizedBtn:" target="429" id="lE6-wK-gPW"/>
+                            <action selector="handleRecognizedBtn:" target="429" id="4kF-9y-1Y5"/>
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="CSh-hX-3rE">
@@ -587,6 +587,17 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="6Ex-UI-gpg">
+                        <rect key="frame" x="354" y="480" width="107" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="复制单号" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UPd-TG-cZy">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="handleCopyBtn:" target="429" id="elI-kt-WNR"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="86" y="131.5"/>
