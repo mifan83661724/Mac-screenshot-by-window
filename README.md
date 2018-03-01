@@ -1,0 +1,1 @@
+# Mac-screenshot-by-window
